@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            body {
+                margin: 0px;
+                padding: 0px;
+            }            
+            #myCanvas {
+                border: 1px solid #9C9898;
+            }
+        </style>
+        <script>
+            
+            window.onload = function(){
+                var canvas = document.getElementById("myCanvas"),
+                    context = canvas.getContext("2d"),
+                    img = new Image(),
+                    stripes = 20,
+                    stripeSize = 0,
+                    width = 0,
+                    height = 0;
+                    
+                img.onload = function(){
+                //setting config
+                    width = img.width;
+                    height = img.height;
+                    stripeSize = width / stripes;
+                    
+                //drawimage
+                    context.drawImage(img, 0, 0);
+                    //lets do the job
+                    analizeImage(); 
+                };
+                
+                img.src = "poc2.png";
+                
+                function analizeImage(){
+                    drawStripes();
+                }
+                
+                
+                function drawStripes(){
+                    for(var i= stripeSize; i < width ; i+= stripeSize){
+                        drawLine(i);
+                    }    
+                }
+                
+                function drawLine(xCoord){
+                    context.strokeStyle="rgba(255, 0, 0, 0.5)";
+                    context.beginPath();
+                    context.moveTo(xCoord,0);
+                    context.lineTo(xCoord,height);
+                    context.closePath();
+                    context.stroke();
+                }
+            };
+        </script>
+    </head>
+    <body onmousedown="return false;">
+        <canvas id="myCanvas" width="640" height="359">
+        </canvas>
+    </body>
+</html>
