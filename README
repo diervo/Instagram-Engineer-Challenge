@@ -1,0 +1,10 @@
+This project is just a solution for the challenge:
+http://instagram-engineering.tumblr.com/post/12651721845/instagram-engineering-challenge-the-unshredder
+
+Is an naive HTML5 approach using canvas.
+
+What we do to detect the stripes, is basically check the similarity with other columns. And if the difference is too hight we know that thats a nice candidate for a stripe colum.
+
+For de unshredder is almost the same. We compare the acual left size of the stripe with all the other left parts. So the best matches win!
+
+The code is not really hard to understand despite of that there are some hardcoded values (some hurry). But might work in several cases as well.
